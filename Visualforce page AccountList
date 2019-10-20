@@ -16,9 +16,9 @@ HINT: Record detail pages can be reached by placing a record ID at the root of t
     
     <apex:pageBlock title="Accounts List">
         
-    <apex:repeat var="a" value="{!accounts}">
-    		<li><apex:outputLink value="/{!a.id}">{!a.Name}</apex:outputLink></li>
-    </apex:repeat>
+                <apex:repeat var="a" value="{!accounts}">
+    		        <li><apex:outputLink value="/{!a.id}">{!a.Name}</apex:outputLink></li>
+                </apex:repeat>
     
     </apex:pageBlock>
     
