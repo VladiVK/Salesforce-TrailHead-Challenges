@@ -1,0 +1,19 @@
+Write an Inline SOSL Search to Return Database Values
+Now that you’ve successfully avoided collision with asteroid 2014 QO441, contact Mission Control at the Neptune Space Station to get cleared for landing so you can take a well-deserved break. Write an inline SOSL search to find and return the contact details of the Mission Specialist at the Neptune Space Station.
+Using Execute Anonymous, like we did when we inserted records for the Control Engineers, insert the contact details for the Mission Specialist on Neptune.
+
+Contact thisContact = new Contact( Firstname='Brian', Lastname='Dent', Phone='(619)852-4569', Department='Mission Control', Title='Mission Specialist - Neptune', Email='briandent@trailhead.com');
+insert thisContact;
+
+Search for the inserted record with an inline SOSL search, using Execute Anonymous. Instead of finding 'Crisis', like we did when we used Execute Anonymous to look for the Control Engineers' records, search for 'Mission Control'. Use the System.debug() method to display the contact's "lastname, firstname" in your debug log .
+Make sure that you see the returned records in the debug log.
+
+
+List<List<sObject>> searchList = [FIND 'Mission Control' IN ALL FIELDS 
+                                  RETURNING Contact(FirstName, LastName,
+                                  Phone, Email, Description)];
+Contact[] searchContacts = (Contact[])searchList[0];
+System.debug('Found the following contacts:');
+for (Contact c : searchContacts) {
+   System.debug(c.LastName + ', ' + c.FirstName);
+}
